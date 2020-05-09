@@ -8,7 +8,7 @@ In this walkthrough we'll make a simple application that can be used as a kick-o
 
 We'll use a WebAPI to get data from the user, a queue to disconnect the user from the processing, a function to read the queue and, finally, table storage to safely store our users data.
 
-We are going to use a static Angular app as the front end. A single page that gathers three bits if information about the user and passes it to the WebAPI. This post doesn't cover that app, but you can find the code in the repo for this tutorial.
+We are going to use a static Angular app as the front end. A single page that gathers three bits of information about the user and passes it to the WebAPI. This post doesn't cover that app, but you can find the code in the repo for this tutorial.
 
 ## Our journey begins
 
@@ -160,7 +160,7 @@ The next step is to write our `Add` function. This allows us to send messages to
 ``` C#
 public async Task<string> Add(object message)
 {
-  // Get a queue client
+  // Get a queue client to use for accessing the Azure Storage Account Queue
   var queueClient = await GetQueueClient();
 
   // Encode our message as JSON
@@ -189,7 +189,7 @@ private async Task<QueueClient> GetQueueClient()
   // Get a queue service client using the connection string property from our code
   var queueServiceClient = new QueueServiceClient(_connectionString);
 
-  // Use the queue client to get a reference to a queue
+  // Use the queue service client to get a reference to a queue
   var queueClient = queueServiceClient.GetQueueClient(_queueName);
 
   // Check the queue exists, and if it doesn't create it (requires Azure.Storage.Queues version `12.3.0` or higher)
@@ -210,7 +210,10 @@ Now we have our `QueueClient`, we need to encode our message to store it
 ``` C#
 private string EncodeMessage(object message)
 {
+  // Serialise the object as a JSON string
   string messageAsString = JsonConvert.SerializeObject(message);
+
+  // Encode the string as Base64 before returning it
   return ToBase64(messageAsString);
 }
 ```
@@ -228,6 +231,8 @@ In order to use `JsonConvert` we will need to add another package `Newtonsoft.Js
 ``` C#
 using Newtonsoft.Json;
 ```
+
+### Convert the string to Base63
 
 We need to serialise the object as JSON data for storing in the queue, but we also need to perform an additional step. Whilst we do not need to write data as Base64 into a queue, Azure Functions, that we will be writing later, need this encoding to read the queue.
 
@@ -466,9 +471,9 @@ namespace BookClubSignupProcessor.TableAccess
 }
 ```
 
-So what do we have in the above snippet?
+Let's take a look at what we have in the above snippet.
 
-Well, the first line says that we are going to be using the `Microsoft.Azure.Cosmos.Table` namespace.
+The first line says that we are going to be using the `Microsoft.Azure.Cosmos.Table` namespace.
 
 I know, we are using Azure Storage Account Tables, but the API is the same. We don't have access to this namespace yet, so we need to add a NuGet package reference to it.
 
