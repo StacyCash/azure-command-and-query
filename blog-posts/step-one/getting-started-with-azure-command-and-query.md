@@ -1,6 +1,12 @@
-![Black and white clouds](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/header-image.jpg)
-
-# Getting Started with Azure Command and Query
+---
+published: false
+title: "Getting Started with Azure Command and Query"
+cover_image: "https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/header-image.jpg"
+description:
+tags: azure, storageaccount, queues, tables, azurefunctions, tutorial
+series: "Azure Command and Query"
+canonical_url:
+---
 
 Coding for the cloud can seem a mountainous challenge at the start. What resources do you need, how can you best use them, and just what will it cost to run your solution?
 
@@ -660,3 +666,4 @@ This has been a quick skim through, and is just the start of making a maintainab
 * Taking a deeper dive into each of the Azure resources we need for this experiment
 * Taking a deeper dive into each of the APIs that we are using to access them!
 * Finally, we'll be automating the deployment, using Azure DevOps, and quickly throwing a static Angular site into the air so that we can interact with our API
+
