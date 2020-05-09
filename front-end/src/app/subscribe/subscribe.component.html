@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Book club reading club subscription</h1>
+  <form>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="model.email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <input type="text" class="form-control" id="genre" required [(ngModel)]="model.genre" name="genre">
+    </div>
+    <button type="input" (click)="submitSubscription()" class="btn btn-default">Submit</button>
+  </form>
+
+  <br>
+  <div class="alert alert-success" *ngFor="let feedback of feedbackList.slice().reverse()">
+    {{feedback.message}} {{feedback.time | date: "dd, mm, yyyy, HH:MM:ss" }}
+  </div>
+</div>
