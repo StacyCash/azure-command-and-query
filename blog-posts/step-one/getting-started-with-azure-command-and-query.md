@@ -6,7 +6,7 @@ Coding for the cloud can seem a mountainous challenge at the start. What resourc
 
 In this walkthrough we'll make a simple application that can be used as a kick-off point for building a disconnected way to store data from our users for future processing.
 
-We'll use a WebAPI to get data from the user, a queue to disconnect the user from the processing, a function to read the queue and, finally, table storage to safely store our users data.
+We'll use a WebAPI to get data from the user, a queue to disconnect the user from the processing, a function to read the queue and, finally, table storage to safely store our user's data.
 
 We are going to use a static Angular app as the front end. A single page that gathers three bits of information about the user and passes it to the WebAPI. This post doesn't cover that app, but you can find the code in the repo for this tutorial.
 
@@ -140,7 +140,7 @@ This means that we also need to add the NuGet package to the solution.
 3. Click 'Browse'
 4. Search for the `Azure.Storage.Queues` package
 5. Choose `Azure.Storage.Queues` from the list of available packages
-6. Click install, and accept all the licenses agreements.
+6. Click install, and accept all the license agreements.
 
 *Make sure that the version being installed is the March 2020 update, version `12.3.0` or higher*
 
@@ -192,7 +192,7 @@ private async Task<QueueClient> GetQueueClient()
   // Use the queue service client to get a reference to a queue
   var queueClient = queueServiceClient.GetQueueClient(_queueName);
 
-  // Check the queue exists, and if it doesn't create it (requires Azure.Storage.Queues version `12.3.0` or higher)
+  // Check the queue exists, and if it doesn't, create it (requires Azure.Storage.Queues version `12.3.0` or higher)
   await queueClient.CreateIfNotExistsAsync();
 
   // Return the `QueueClient`
@@ -334,7 +334,7 @@ Out first step on this part of the journey is to create the function app.
 7. Leave the **Connection string setting name** empty, we'll cover this in a later tutorial
 8. Add the **Queue name**, the same as we had in the WebAPI app
 
-> There are many types of trigger available. As we can see in the screen shot one is a HTTP trigger. We can use this to replace our WebAPI, but there are disadvantages to this that we will cover in the next tutorial where we set up our Azure Environment for this code
+> There are many types of trigger available. As we can see in the screen shot one is a HTTP trigger. We can use this to replace our WebAPI, but there are disadvantages to this that we will cover in the next tutorial where we set up our Azure Environment for this code.
 
 9. Click **Create** to finish generating the project.
 
@@ -360,7 +360,7 @@ Remember the **Connection string setting name** that we left empty when making t
 
 Because we chose *Storage emulator* for our **Storage account** we don't need to do anything to access the Azure Storage Emulator where our current request is waiting for us. This happens automagically, but I think it's a good idea to at least see how this works.
 
-Open the `local.settings.json` file it should look something like this
+Open the `local.settings.json` file. It should look something like this
 
 ``` JSON
 {
@@ -583,7 +583,7 @@ A `TableEntity` has two important properties that we need to use when accessing 
 * PartitionKey: How we *split* our data in across data partitions
 * RowKey: The unique identifier within our data partition.
 
-Between the two properties our entity needs to be unique in our Table, otherwise we are going to get errors
+Between the two properties our entity needs to be unique in our Table, otherwise we are going to get errors.
 
 We've wrapped these fields inside of properties that are ignored when the data is serialised to the table itself. This is primarily so that our code remains readable. Rather than than have Azure information spread throughout our code, we now have properties which have meaning to the code.
 
