@@ -661,7 +661,7 @@ You now have a solution that will write your users request to a queue, read that
 
 This has been a quick skim through, and is just the start of making a maintainable cloud solution. In the following posts, over the coming months, we'll be
 
-* provisioning an environment in Azure that can host this app so that we can see it in action
+* Provisioning an environment in Azure that can host this app so that we can see it in action
 * Taking a look at the Azure cost calculator so that we can check what the associated costs of that environment will be
 * Taking a deeper dive into each of the Azure resources we need for this experiment
 * Taking a deeper dive into each of the APIs that we are using to access them!
