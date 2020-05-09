@@ -1,4 +1,4 @@
-![Black and white clouds](./images/header-image.jpg)
+![Black and white clouds](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/header-image.jpg)
 
 # Getting Started with Azure Command and Query
 
@@ -94,7 +94,7 @@ The rest of the code is as it was when created by Visual Studio.
 
 Here is an overview of our solution in Visual Studio 2019:
 
-![Solution explorer in VS 2019 for the empty start project](./images/solution-explorer-start-project.png)
+![Solution explorer in VS 2019 for the empty start project](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/solution-explorer-start-project.png)
 
 ## Write Request to Queue
 
@@ -105,7 +105,7 @@ That is the API, now we need to use that to write to our Azure Storage Account Q
 1. In the root of the project create a folder named 'QueueHelper'
 2. In the 'QueueHelper' folder create a new class and call it 'QueueAccess'
 
-![Folder and class we've created in Visual Studio](./images/queue-access-folder-and-class.png)
+![Folder and class we've created in Visual Studio](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/queue-access-folder-and-class.png)
 
 3. Paste the following code over into the newly created class to replace the generated code
 
@@ -292,11 +292,11 @@ Well we can install the [Azure Storage Explorer](https://azure.microsoft.com/en-
 
 Opening the Azure Storage Explorer we should be able to navigate to our emulated storage and see the Queue has been created, as with the example below.
 
-![Storage Explorer Showing Created Queue](./images/storage-explorer-queue.png)
+![Storage Explorer Showing Created Queue](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/storage-explorer-queue.png)
 
 And we should be able to see the JSON string that we have stored in our queue:
 
-![JSON String in our queue](./images/json-string-in-queue.png)
+![JSON String in our queue](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/json-string-in-queue.png)
 
 We can see that the string is readable, even though we have Base64 encoded it. The Storage Explorer decodes it to us so that we can see it.
 
@@ -310,19 +310,19 @@ Out first step on this part of the journey is to create the function app.
 
 1. Open a new instance of Visual Studio and create a new project.
 
-![Visual Studio 2019 Create New Project Startup Screen](./images/vs-2019-create-new-project.png)
+![Visual Studio 2019 Create New Project Startup Screen](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/vs-2019-create-new-project.png)
 
 2. Select Azure Function project and click **Next**
 
-![Visual Studio 2019 Select Azure Function Project](./images/vs-azure-function-project-selection.png)
+![Visual Studio 2019 Select Azure Function Project](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/vs-azure-function-project-selection.png)
 
 3. Name the project `BookClubSignupProcessor`, set the location and click **Create**
 
-![Visual Studio 2019 Configure The Project](./images/vs-configure-your-project.png)
+![Visual Studio 2019 Configure The Project](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/vs-configure-your-project.png)
 
 4. Set the function trigger to Queue
 
-![Visual Studio 2019 Set Azure Function Trigger Type](./images/azure-function-app-trigger.png)
+![Visual Studio 2019 Set Azure Function Trigger Type](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/azure-function-app-trigger.png)
 
 5. Select Queue trigger
 6. Set the **Storage account** to Storage Emulator
@@ -335,7 +335,7 @@ Out first step on this part of the journey is to create the function app.
 
 We should now have a project that looks like this:
 
-![Function app solution when first created](./images/solution-explorer-start-function-project.png)
+![Function app solution when first created](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/solution-explorer-start-function-project.png)
 
 ### A little housekeeping before we continue
 
@@ -435,7 +435,7 @@ We want to take the request we have available to us now and write it to an Azure
 2. In the 'TableAccess' folder create a new class and call it 'StorageTableAccess'
 3. In the 'TableAccess' folder create a new class and call it 'BookClubSignupEntity'
 
-![Folder and classes we've created in Visual Studio](./images/table-access-folder-and-classes.png)
+![Folder and classes we've created in Visual Studio](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/table-access-folder-and-classes.png)
 
 #### StorageTableAccess
 
@@ -634,11 +634,11 @@ Now we can run our function! Make sure that we have some data waiting in the que
 
 When the function has fired we should be able to refresh the view in our `Azure Storage Explorer` and see the following table has been created:
 
-![Table has been created inside of storage explorer](./images/storage-explorer-table.png)
+![Table has been created inside of storage explorer](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/storage-explorer-table.png)
 
 And if we look in the table we should see the data that we sent to the WebAPI waiting for us!
 
-![Queue data is inside the newly created table](./images/queue-data-in-table.png)
+![Queue data is inside the newly created table](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/queue-data-in-table.png)
 
 ## Closure and Next Steps
 
