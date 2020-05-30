@@ -10,6 +10,4 @@ We are going to use a static Angular app as the front end. A single page that ga
 
 ## Our journey begins
 
-The code in this repository can be used to follow along the series of tutorials to be found here:
-
-***TODO*** [Getting Started with Azure Command and Query ]()
+The code in this repository can be used to follow along the series of tutorials to be found [here](https://dev.to/stacy_cash/getting-started-with-azure-command-and-query-80j)
