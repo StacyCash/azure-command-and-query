@@ -5,7 +5,7 @@ namespace BookClubSignupProcessor.TableAccess
 {
   public class StorageTableAccess
   {
-    private const string _connectionString = "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;";
+    private const string _connectionString = "<Your Azure Storage Account Connection String>";
     private readonly string _tableName;
 
     public StorageTableAccess(string tableName)
