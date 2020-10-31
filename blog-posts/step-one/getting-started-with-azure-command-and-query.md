@@ -10,7 +10,7 @@ canonical_url:
 
 Coding for the cloud can seem a mountainous challenge at the start. What resources do you need, how can you best use them, and just what will it cost to run your solution?
 
-In this walkthrough we'll make a simple application that can be used as a kick-off point for building a disconnected way to store data from our users for future processing.
+In this walkthrough, we'll make a simple application that can be used as a kick-off point for building a disconnected way to store data from our users for future processing.
 
 We'll use a WebAPI to get data from the user, a queue to disconnect the user from the processing, a function to read the queue and, finally, table storage to safely store our user's data.
 
@@ -18,7 +18,7 @@ We are going to use a static Angular app as the front end. A single page that ga
 
 ## Our journey begins
 
-We are going to start with a near empty application, and add the code we need to make it fully functional throughout this project. You can find the starting point [here](https://github.com/StacyCash/azure-command-and-query)
+We are going to start with a near-empty application, and add the code we need to make it fully functional throughout this project. You can find the starting point [here](https://github.com/StacyCash/azure-command-and-query)
 
 Clone the repo and checkout `step-one-start`
 
@@ -28,7 +28,7 @@ Lets's quickly go over our starting project, it is an almost empty WebAPI applic
 
 ### The Controller
 
-It contains a controller, with just one POST method,.
+It contains a controller, with just one POST method:
 
 ``` C#
 using System.Threading.Tasks;
@@ -100,7 +100,7 @@ The rest of the code is as it was when created by Visual Studio.
 
 Here is an overview of our solution in Visual Studio 2019:
 
-![Solution explorer in VS 2019 for the empty start project](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/solution-explorer-start-project.png)
+![Solution Explorer in VS 2019 for the empty start project](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/solution-explorer-start-project.png)
 
 ## Write Request to Queue
 
@@ -141,7 +141,7 @@ Starting with the using statements we see that we want to access the `Azure.Stor
 
 This means that we also need to add the NuGet package to the solution.
 
-1. Right click the project
+1. Right-click the project
 2. Select 'Manage NuGet Packages...' to open the package manager for the project
 3. Click 'Browse'
 4. Search for the `Azure.Storage.Queues` package
@@ -150,7 +150,7 @@ This means that we also need to add the NuGet package to the solution.
 
 *Make sure that the version being installed is the March 2020 update, version `12.3.0` or higher*
 
-Within our class itself we see a connection string, this is the connection string to our Azure Storage Account. For now we don't have a storage account so we are going to use the [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator). Click the link to get quick instructions for setting this up, and getting the connection string.
+Within our class itself, we see a connection string, this is the connection string to our Azure Storage Account. For now, we don't have a storage account so we are going to use the [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator). Click the link to get quick instructions for setting this up, and getting the connection string.
 
 Hopefully, we now have emulated storage working, and we can continue.
 
@@ -224,9 +224,9 @@ private string EncodeMessage(object message)
 }
 ```
 
-In order to use `JsonConvert` we will need to add another package `Newtonsoft.Json` to the project
+In order to use `JsonConvert`, we will need to add another package `Newtonsoft.Json` to the project
 
-1. Right click the project
+1. Right-click the project
 2. Select 'Manage NuGet Packages...' to open the package manager for the project
 3. Click 'Browse'
 4. Search for the `Newtonsoft.Json` package
@@ -242,7 +242,7 @@ using Newtonsoft.Json;
 
 We need to serialise the object as JSON data for storing in the queue, but we also need to perform an additional step. Whilst we do not need to write data as Base64 into a queue, Azure Functions, that we will be writing later, need this encoding to read the queue.
 
-In previous packages used to write to the queue, `Microsoft.Azure.Storage.Queue` - now legacy, this was handled for the developer automatically. But the new API doesn't yet have this built in, so we need to write a function to encode it ourselves.
+In previous packages used to write to the queue, `Microsoft.Azure.Storage.Queue` - now legacy, this was handled for the developer automatically. But the new API doesn't yet have this built-in, so we need to write a function to encode it ourselves.
 
 1. Copy the code below
 2. Paste it to the end of the `QueueAccess` class
@@ -291,7 +291,7 @@ There are two things of note here:
 1. We used the await keyword because our `add` function is asynchronous
 2. The name of our queue is all lower case
 
-> The second point makes the queue name harder to read, but unfortunately it's a requirement of Azure Storage Account queues. We can only use lowercase letters or numbers in the name. No camel case, no pascal case and no kebab case. Sorry.
+> The second point makes the queue name harder to read, but unfortunately, it's a requirement of Azure Storage Account queues. We can only use lowercase letters or numbers in the name. No camel case, no pascal case and no kebab case. Sorry.
 
 We can run our WebAPI and store a request in the emulated storage we have created.
 
@@ -299,7 +299,7 @@ We can run our WebAPI and store a request in the emulated storage we have create
 
 Aside from running the WebAPI and not seeing errors, how do we know that our request has been stored?
 
-Well we can install the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/#features) to take a look. Follow the link to download and install the app.
+Well, we can install the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/#features) to take a look. Follow the link to download and install the app.
 
 Opening the Azure Storage Explorer we should be able to navigate to our emulated storage and see the Queue has been created, as with the example below.
 
@@ -313,7 +313,7 @@ We can see that the string is readable, even though we have Base64 encoded it. T
 
 ## Read the queue
 
-Now that we have written to our queue, the next step is to write a function to retrieve it and perform our processing! For this example that processing is going to be limited to putting the data into an Azure Storage Account table.
+Now that we have written to our queue, the next step is to write a function to retrieve it and perform our processing! For this example, that processing is going to be limited to putting the data into an Azure Storage Account table.
 
 ### Create the Function App
 
@@ -340,7 +340,7 @@ Out first step on this part of the journey is to create the function app.
 7. Leave the **Connection string setting name** empty, we'll cover this in a later tutorial
 8. Add the **Queue name**, the same as we had in the WebAPI app
 
-> There are many types of trigger available. As we can see in the screen shot one is a HTTP trigger. We can use this to replace our WebAPI, but there are disadvantages to this that we will cover in the next tutorial where we set up our Azure Environment for this code.
+> There are many types of trigger available. As we can see in the screenshot one is an HTTP trigger. We can use this to replace our WebAPI, but there are disadvantages to this that we will cover in the next tutorial where we set up our Azure Environment for this code.
 
 9. Click **Create** to finish generating the project.
 
@@ -354,7 +354,7 @@ We should now have a project that looks like this:
 1. Rename the `Function1.cs` to `BookClubSignupProcessor.cs`, let Visual Studio also rename the class for us.
 2. Change the `[FunctionName("Function1")]` attribute of the Function method to `[FunctionName("BookClubSignupProcessor")]`.
 
-> This is the name of the function as it will appear in the Azure portal. Make sure there are no spaces in this name. Otherwise it will build, and deploy, without a problem. But it won't work, and there won't be error messages.
+> This is the name of the function as it will appear in the Azure portal. Make sure there are no spaces in this name. Otherwise, it will build, and deploy, without a problem. But it won't work, and there won't be error messages.
 
 3. Remove `, Connection = ""` from the `QueueTrigger` attribute of the `Run` function
 
@@ -483,14 +483,14 @@ The first line says that we are going to be using the `Microsoft.Azure.Cosmos.Ta
 
 I know, we are using Azure Storage Account Tables, but the API is the same. We don't have access to this namespace yet, so we need to add a NuGet package reference to it.
 
-1. Right click the project
+1. Right-click the project
 2. Select 'Manage NuGet Packages...' to open the package manager for the project
 3. Click 'Browse'
 4. Search for the `Microsoft.Azure.Cosmos.Table` package
 5. Choose `Microsoft.Azure.Cosmos.Table` from the list of available packages
 6. Click install, and accept all the licenses agreements.
 
-In the code there is a `_connectionString` defined. This is the same connection string as we used for writing to the Queue, so we can copy it from our WebAPI `QueueHelper` class. As a single Azure Storage Account can contain both Queues and Tables there is no need to create one just for the table storage.
+In the code, there is a `_connectionString` defined. This is the same connection string as we used for writing to the Queue, so we can copy it from our WebAPI `QueueHelper` class. As a single Azure Storage Account can contain both Queues and Tables there is no need to create one just for the table storage.
 
 We also have the `_tableName` defined, and this is passed into the constructor. As with the `QueueHelper` we want to reuse this class for all tables we are going to access, and not have to rewrite it each time.
 
@@ -513,7 +513,7 @@ public async Task Insert(BookClubSignupEntity entity)
 
 The `TableOperation` and `ExecuteAsync` are from the Cosmos Table namespace we are using.
 
-But not the `GetTableAsync` and the `BookClubSignupEntity`, these ones we need to write ourselves.
+But not the `GetTableAsync` and the `BookClubSignupEntity`, these we need to write ourselves.
 
 1. Copy the code below
 2. Paste the following code and paste at the end of the `StorageTableAccess` class
@@ -589,9 +589,9 @@ A `TableEntity` has two important properties that we need to use when accessing 
 * PartitionKey: How we *split* our data in across data partitions
 * RowKey: The unique identifier within our data partition.
 
-Between the two properties our entity needs to be unique in our Table, otherwise we are going to get errors.
+Between the two properties, our entity needs to be unique in our Table, otherwise, we are going to get errors.
 
-We've wrapped these fields inside of properties that are ignored when the data is serialised to the table itself. This is primarily so that our code remains readable. Rather than than have Azure information spread throughout our code, we now have properties which have meaning to the code.
+We've wrapped these fields inside of properties that are ignored when the data is serialised to the table itself. This is primarily so that our code remains readable. Rather than have Azure information spread throughout our code, we now have properties which have meaning to the code.
 
 To complete our class we still need the actual data that we are going to be storing. Now we can consume these classes in our function to store our data.
 
@@ -600,7 +600,7 @@ To complete our class we still need the actual data that we are going to be stor
 We need to change the function itself to use our new classes.
 
 1. Open the `BookClubSignupProcessor` class
-2. Replace the code in the `Run` method with the code snipper below
+2. Replace the code in the `Run` method with the code snippet below
 
 ``` C#
 var tableAccess = new StorageTableAccess("BookClucbSignups");
@@ -631,7 +631,7 @@ private static BookClubSignupEntity AdaptRequest(BookClubSignupRequest request)
 
 This takes our request and adapts it to a `BookClubSignupEntity` to be stored.
 
-One more thing needs to be done before we can run this code. We can see that the asynchronous call to the `tableAccess.Insert` has a squiggle. That's because the Run method created by the new project wizard makes the function synchronous by default. 
+One more thing that needs to be done before we can run this code. We can see that the asynchronous call to the `tableAccess.Insert` has a squiggle. That's because the Run method created by the new project wizard makes the function synchronous by default. 
 
 1. Add `async` to the function signature as below.
 
@@ -653,13 +653,13 @@ And if we look in the table we should see the data that we sent to the WebAPI wa
 
 ## Closure and Next Steps
 
-You can find the end point in the GitHub repo [here](https://github.com/StacyCash/azure-command-and-query)
+You can find the endpoint in the GitHub repo [here](https://github.com/StacyCash/azure-command-and-query)
 
-Clone the repo, if you haven't already and checkout `step-two-start`
+Clone the repo, if you haven't already and check out `step-two-start`
 
 You now have a solution that will write your users request to a queue, read that queue with a function and then turn that request into data stored in a function table.
 
-This has been a quick skim through, and is just the start of making a maintainable cloud solution. In the following posts, over the coming months, we'll be
+This has been a quick skim through and is just the start of making a maintainable cloud solution. In the following posts, over the coming months, we'll be
 
 * Provisioning an environment in Azure that can host this app so that we can see it in action
 * Taking a look at the Azure cost calculator so that we can check what the associated costs of that environment will be
