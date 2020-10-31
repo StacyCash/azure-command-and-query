@@ -3,7 +3,7 @@ published: true
 title: "Getting Started with Azure Command and Query"
 cover_image: "https://raw.githubusercontent.com/StacyCash/azure-command-and-query/master/blog-posts/step-one/Images/header-image.jpg"
 description:
-tags: azure, storageaccount, queues, tables, azurefunctions, tutorial
+tags: azure, storageaccount, azurefunctions, tutorial
 series: "Azure Command and Query"
 canonical_url:
 ---
