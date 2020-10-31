@@ -667,3 +667,20 @@ This has been a quick skim through, and is just the start of making a maintainab
 * Taking a deeper dive into each of the APIs that we are using to access them!
 * Finally, we'll be automating the deployment, using Azure DevOps, and quickly throwing a static Angular site into the air so that we can interact with our API
 
+## Further Reading
+
+### Azure.Storage.Queues Namespace
+
+* [Documentation](https://docs.microsoft.com/en-us/dotnet/api/azure.storage.queues.queueclient?view=azure-dotnet&WT.mc_id=AZ-MVP-5003925)
+
+### Microsoft.Azure.Cosmos.Table Namespace
+
+* [Introduction to Azure Cosmos DB: Table API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction?WT.mc_id=AZ-MVP-5003925) - This is aimed more at the Cosmos DB usage, but is also relevant for Azure Table Storage
+* [Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.table?view=azure-dotnet&WT.mc_id=AZ-MVP-5003925)
+
+### Azure Functions
+
+* [Microsoft Learn Azure Functions](https://docs.microsoft.com/en-us/learn/modules/create-serverless-logic-with-azure-functions/?WT.mc_id=AZ-MVP-5003925)
+* [Microsoft Docs Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/?WT.mc_id=AZ-MVP-5003925?WT.mc_id=AZ-MVP-5003925)
+
+[Cover photo by Philipp Birmes from Pexels](https://www.pexels.com/photo/low-angle-photo-of-four-high-rise-curtain-wall-buildings-under-white-clouds-and-blue-sky-830891/)
