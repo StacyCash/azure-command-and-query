@@ -683,4 +683,3 @@ This has been a quick skim through and is just the start of making a maintainabl
 * [Microsoft Learn Azure Functions](https://docs.microsoft.com/en-us/learn/modules/create-serverless-logic-with-azure-functions/?WT.mc_id=AZ-MVP-5003925)
 * [Microsoft Docs Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/?WT.mc_id=AZ-MVP-5003925?WT.mc_id=AZ-MVP-5003925)
 
-[Cover photo by Philipp Birmes from Pexels](https://www.pexels.com/photo/low-angle-photo-of-four-high-rise-curtain-wall-buildings-under-white-clouds-and-blue-sky-830891/)
