@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "storage1": {
-      "type": "storage.emulator",
+      "resourceId": "/subsriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Storage/storageAccounts/<Your Storage Account Name>",
+      "type": "storage.azure",
       "connectionId": "AzureWebJobsStorage"
     }
   }
