@@ -1,11 +1,11 @@
 ---
-published: false
+published: true
 title: "Setting up the Azure Environment"
-cover_image: "Images/header-image.jpg"
+cover_image: "https://raw.githubusercontent.com/StacyCash/azure-command-and-query/main/blog-posts/step-two/Images/header-image.jpg"
 description:
 tags: azure, storageaccount, azurefunctions, tutorial
 series: "Azure Command and Query"
-canonical_url:
+canonical_url: https://dev.to/stacy_cash/setting-up-the-azure-environment-47fb
 ---
 
 * Step 1: [Getting Started with Azure Command and Query](https://dev.to/stacy_cash/getting-started-with-azure-command-and-query-80j)
