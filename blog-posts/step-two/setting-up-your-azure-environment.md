@@ -52,7 +52,7 @@ This allows easy management of the resources. All related resources are located 
 
 ![Resource Group Icon](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/main/blog-posts/step-two/Images/resource-group-icon.png)
 
-2. On the Resource Groups page click the '+ Add' button.
+2. On the Resource Groups page click the '+ Create' button.
 
 ![Resource Group List](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/main/blog-posts/step-two/Images/resource-groups-list.png)
 
@@ -92,7 +92,7 @@ We need a Web App in order to deploy our Web API application. Think of this like
 
 ![Resource Add Button](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/main/blog-posts/step-two/Images/add.png)
 
-3. Click on `Webb app'
+3. Click on `Web app'
 
 ![New Resource Blade](https://raw.githubusercontent.com/StacyCash/azure-command-and-query/main/blog-posts/step-two/Images/new-resource.png)
 
@@ -497,7 +497,7 @@ There are three changes that we need to make to change the trigger
   "dependencies": {
     "storage1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Storage/storageAccounts/<Storage Account Name>",
-      "type": "storage.emulator",
+      "type": "storage.azure",
       "connectionId": "AzureWebJobsStorage"
     }
   }
@@ -508,6 +508,9 @@ There are three changes that we need to make to change the trigger
 
 4. Copy the connection Azure Storage Account connection string from the Azure Portal, [as we did earlier](#Get-the-connection-string-for-the-storage-account)
 5. Open the `local.settings.json` file
+
+> You may need to recreate this file due to `.gitignore` settings. If so create it in the root of the Functions project
+
 6. Replace the value of `AzureWebJobsStorage` (currently `"UseDevelopmentStorage=true"`) with the value copied from the Azure portal
 
 It should now look like this, but with your storage account connection string:
@@ -613,13 +616,16 @@ Now that we know our Function is deployed and available we can run our final tes
 
 We now have a full environment deployed and can do one final test to make sure that everything is set up as it should be.
 
-We are going to use the same test as we did running the [Function locally](#test-the-full-application-locally). The only thing we need to run locally now is out front end!
+We are going to use the same test as we did running the [Function locally](#test-the-full-application-locally). The only thing we need to run locally now is our front end!
 
 ## Closure and Next Steps
 
 You can find the end point in the GitHub repo [here](https://github.com/StacyCash/azure-command-and-query)
 
 Clone the repo, if you haven't already and checkout `step-three-start`
+
+> Files will need editing to run - ensure that the correct connection strings and storage account names are set. Due to the nature of publish profiles and their access tokens these files are not included - you will need to follow the publish steps yourself to deploy this repo.
+
 
 Our solution is now deployed, and running in the cloud. Using a Web App, Azure Storage Account and Azure Function to run in the wild.
 
