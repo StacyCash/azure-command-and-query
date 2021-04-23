@@ -238,7 +238,7 @@ In order to use `JsonConvert`, we will need to add another package `Newtonsoft.J
 using Newtonsoft.Json;
 ```
 
-### Convert the string to Base63
+### Convert the string to Base64
 
 We need to serialise the object as JSON data for storing in the queue, but we also need to perform an additional step. Whilst we do not need to write data as Base64 into a queue, Azure Functions, that we will be writing later, need this encoding to read the queue.
 
